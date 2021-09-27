@@ -1,0 +1,111 @@
+#!/bin/bash
+#SBATCH --nodes=8
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH -p cpu_small
+#SBATCH -J part_base
+#SBATCH --exclusive
+#SBATCH --time=72:00:00
+
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+module load gcc/8.3
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/hmlffr2/luis.cury/lib
+
+EXEC=/scratch/hmlffr2/luis.cury/part_base_sdumont_specific
+/usr/bin/ldd $EXEC
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 4 >base_log/base_401.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 4 >base_log/base_403.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 4 >base_log/base_405.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 4 >base_log/base_407.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 4 >base_log/base_409.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 4 >base_log/base_411.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 4 >base_log/base_413.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 4 >base_log/base_415.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 4 >base_log/base_417.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 4 >base_log/base_419.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 0 >base_log/base_001.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 0 >base_log/base_003.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 0 >base_log/base_005.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 0 >base_log/base_007.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 0 >base_log/base_009.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 0 >base_log/base_011.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 0 >base_log/base_013.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 0 >base_log/base_015.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 0 >base_log/base_017.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 0 >base_log/base_019.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 1 >base_log/base_101.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 1 >base_log/base_103.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 1 >base_log/base_105.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 1 >base_log/base_107.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 1 >base_log/base_109.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 1 >base_log/base_111.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 1 >base_log/base_113.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 1 >base_log/base_115.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 1 >base_log/base_117.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 1 >base_log/base_119.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 2 >base_log/base_201.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 2 >base_log/base_203.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 2 >base_log/base_205.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 2 >base_log/base_207.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 2 >base_log/base_209.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 2 >base_log/base_211.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 2 >base_log/base_213.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 2 >base_log/base_215.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 2 >base_log/base_217.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 2 >base_log/base_219.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 3 >base_log/base_301.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 3 >base_log/base_303.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 3 >base_log/base_305.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 3 >base_log/base_307.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 3 >base_log/base_309.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 3 >base_log/base_311.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 3 >base_log/base_313.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 3 >base_log/base_315.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 3 >base_log/base_317.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 3 >base_log/base_319.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 5 >base_log/base_501.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 5 >base_log/base_503.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 5 >base_log/base_505.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 5 >base_log/base_507.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 5 >base_log/base_509.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 5 >base_log/base_511.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 5 >base_log/base_513.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 5 >base_log/base_515.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 5 >base_log/base_517.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 5 >base_log/base_519.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 6 >base_log/base_601.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 6 >base_log/base_603.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 6 >base_log/base_605.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 6 >base_log/base_607.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 6 >base_log/base_609.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 6 >base_log/base_611.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 6 >base_log/base_613.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 6 >base_log/base_615.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 6 >base_log/base_617.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 6 >base_log/base_619.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 7 >base_log/base_701.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 7 >base_log/base_703.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 7 >base_log/base_705.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 7 >base_log/base_707.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 7 >base_log/base_709.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 7 >base_log/base_711.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 7 >base_log/base_713.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 7 >base_log/base_715.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 7 >base_log/base_717.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 7 >base_log/base_719.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_01.param 8 >base_log/base_801.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_03.param 8 >base_log/base_803.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_05.param 8 >base_log/base_805.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_07.param 8 >base_log/base_807.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_09.param 8 >base_log/base_809.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_11.param 8 >base_log/base_811.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_13.param 8 >base_log/base_813.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_15.param 8 >base_log/base_815.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_17.param 8 >base_log/base_817.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_base_19.param 8 >base_log/base_819.log&
+wait

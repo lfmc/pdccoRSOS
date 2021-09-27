@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH --nodes=3
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH -p cpu_small
+#SBATCH -J kidney_100k
+#SBATCH --exclusive
+#SBATCH --time=36:00:00
+
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+module load gcc/8.3
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/hmlffr2/luis.cury/lib
+
+EXEC=$SCRATCH/kidney_parts_power_specific
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 1 >kidney_100k/r_01.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 2 >kidney_100k/r_02.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 3 >kidney_100k/r_03.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 4 >kidney_100k/r_04.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 5 >kidney_100k/r_05.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 6 >kidney_100k/r_06.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 7 >kidney_100k/r_07.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03_part.param 8 >kidney_100k/r_08.log &
+wait

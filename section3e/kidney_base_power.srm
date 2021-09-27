@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH -p cpu_small
+#SBATCH -J k_base_power
+#SBATCH --exclusive
+#SBATCH --time=12:00:00
+
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+module load gcc/8.3
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/hmlffr2/luis.cury/lib
+
+EXEC=/scratch/hmlffr2/luis.cury/kidney_base_power
+/usr/bin/ldd $EXEC
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC k_base_power_03.param > kidney_100k/k_power_03.log
+

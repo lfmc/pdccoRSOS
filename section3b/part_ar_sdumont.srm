@@ -1,0 +1,31 @@
+#!/bin/bash
+#SBATCH --nodes=5
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH -p cpu_small
+#SBATCH -J part_ar
+#SBATCH --exclusive
+#SBATCH --time=72:00:00
+
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+module load gcc/8.3
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/hmlffr2/luis.cury/lib
+
+EXEC=/scratch/hmlffr2/luis.cury/part_ar_sdumont
+/usr/bin/ldd $EXEC
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_01.param > ar_log/ar_01.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_02.param > ar_log/ar_02.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_03.param > ar_log/ar_03.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_04.param > ar_log/ar_04.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_05.param > ar_log/ar_05.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_06.param > ar_log/ar_06.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_07.param > ar_log/ar_07.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_08.param > ar_log/ar_08.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_09.param > ar_log/ar_09.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC part_ar_10.param > ar_log/ar_10.log&
+wait

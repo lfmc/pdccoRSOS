@@ -1,0 +1,38 @@
+#!/bin/bash
+#SBATCH --nodes=3
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH -p cpu_long
+#SBATCH -J 100k_sequential
+#SBATCH --exclusive
+#SBATCH --time=168:00:00
+
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+module load gcc/8.3
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/hmlffr2/luis.cury/lib
+
+EXEC=$SCRATCH/100k_sequential
+SCRIPT=$SCRATCH/100k_sequential_step.sh
+
+/usr/bin/ldd $EXEC
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 1000 100k_log/resume_1000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 2000 100k_log/resume_2000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 3000 100k_log/resume_3000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 4000 100k_log/resume_4000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 5000 100k_log/resume_5000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 6000 100k_log/resume_6000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 7000 100k_log/resume_7000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 8000 100k_log/resume_8000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 9000 100k_log/resume_9000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 10000 100k_log/resume_10000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 15000 100k_log/resume_15000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 20000 100k_log/resume_20000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 25000 100k_log/resume_25000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 30000 100k_log/resume_30000.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $SCRIPT 35000 100k_log/resume_35000.log &
+wait

@@ -1,0 +1,97 @@
+#!/bin/bash
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=24
+#SBATCH -p cpu_small
+#SBATCH -J 100k_parts
+#SBATCH --exclusive
+#SBATCH --time=72:00:00
+
+echo $SLURM_JOB_NODELIST
+nodeset -e $SLURM_JOB_NODELIST
+
+module load gcc/8.3
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/hmlffr2/luis.cury/lib
+
+EXEC=$SCRATCH/100k_parts
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 1 >100k_log/p16_01.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 2 >100k_log/p16_02.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 3 >100k_log/p16_03.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 4 >100k_log/p16_04.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 5 >100k_log/p16_05.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 6 >100k_log/p16_06.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 7 >100k_log/p16_07.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 8 >100k_log/p16_08.log &
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 9 >100k_log/p16_09.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 10 >100k_log/p16_10.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 11 >100k_log/p16_11.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 12 >100k_log/p16_12.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 13 >100k_log/p16_13.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 14 >100k_log/p16_14.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 15 >100k_log/p16_15.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p16 16 >100k_log/p16_16.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 1 >100k_log/p25_01.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 2 >100k_log/p25_02.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 3 >100k_log/p25_03.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 4 >100k_log/p25_04.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 5 >100k_log/p25_05.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 6 >100k_log/p25_06.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 7 >100k_log/p25_07.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 8 >100k_log/p25_08.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 9 >100k_log/p25_09.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 10 >100k_log/p25_10.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 11 >100k_log/p25_11.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 12 >100k_log/p25_12.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 13 >100k_log/p25_13.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 14 >100k_log/p25_14.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 15 >100k_log/p25_15.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 16 >100k_log/p25_16.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 17 >100k_log/p25_17.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 18 >100k_log/p25_18.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 19 >100k_log/p25_19.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 20 >100k_log/p25_20.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 21 >100k_log/p25_21.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 22 >100k_log/p25_22.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 23 >100k_log/p25_23.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 24 >100k_log/p25_24.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p25 25 >100k_log/p25_25.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 1 >100k_log/p36_01.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 2 >100k_log/p36_02.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 3 >100k_log/p36_03.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 4 >100k_log/p36_04.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 5 >100k_log/p36_05.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 6 >100k_log/p36_06.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 7 >100k_log/p36_07.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 8 >100k_log/p36_08.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 9 >100k_log/p36_09.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 10 >100k_log/p36_10.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 11 >100k_log/p36_11.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 12 >100k_log/p36_12.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 13 >100k_log/p36_13.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 14 >100k_log/p36_14.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 15 >100k_log/p36_15.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 16 >100k_log/p36_16.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 17 >100k_log/p36_17.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 18 >100k_log/p36_18.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 19 >100k_log/p36_19.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 20 >100k_log/p36_20.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 21 >100k_log/p36_21.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 22 >100k_log/p36_22.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 23 >100k_log/p36_23.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 24 >100k_log/p36_24.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 25 >100k_log/p36_25.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 26 >100k_log/p36_26.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 27 >100k_log/p36_27.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 28 >100k_log/p36_28.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 29 >100k_log/p36_29.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 30 >100k_log/p36_30.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 31 >100k_log/p36_31.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 32 >100k_log/p36_32.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 33 >100k_log/p36_33.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 34 >100k_log/p36_34.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 35 >100k_log/p36_35.log&
+srun -N 1 -n 1 -c $SLURM_CPUS_PER_TASK $EXEC p36 36 >100k_log/p36_36.log&
+wait
