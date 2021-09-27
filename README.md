@@ -24,3 +24,25 @@ This section analyses the scalability of the PDCCO approach.
 
 This section illustrates the application of the PDCCO to the vascularization of a prototypical human kidney.
 
+# Needed software
+
+## C++11
+
+## CMake 
+
+Used for building **VTK** and **VItA** libraries. 
+Available at https://cmake.org/download/.
+
+## VTK 8.1.2
+
+[The Visualization Toolkit v8.1.2](https://gitlab.kitware.com/vtk/vtk/-/tree/v8.1.2) is used by the **VItA** library.
+
+## VItA 
+
+[The Virtual ITerative Angiogenesis](https://github.com/lfmc/VItA/tree/Cury2021_et_al_PDCCO) implements the PDCCO and [DCCO](https://doi.org/10.1038/s41598-021-85434-9) methods. For the main version please visit https://github.com/GonzaloMaso/VItA.
+
+## Plotting and related libraries
+[Python 3.8.5](python.org/downloads/).
+[Pandas 1.1.3](https://pypi.org/project/pandas/1.1.3/#files).
+[Numpy 1.19.2](https://numpy.org/install/).
+[Matplotlib 3.3.2](https://matplotlib.org/stable/users/installing.html).
