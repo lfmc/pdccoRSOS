@@ -36,10 +36,12 @@ Available at https://cmake.org/download/.
 ## VTK 8.1.2
 
 [The Visualization Toolkit v8.1.2](https://gitlab.kitware.com/vtk/vtk/-/tree/v8.1.2) is used by the **VItA** library.
+For specific compilation flags used please see compilation vtkBuildConfig.png
 
 ## VItA 
 
 [The Virtual ITerative Angiogenesis](https://github.com/lfmc/VItA/tree/Cury2021_et_al_PDCCO) implements the PDCCO and [DCCO](https://doi.org/10.1038/s41598-021-85434-9) methods. For the main version please visit https://github.com/GonzaloMaso/VItA.
+For specific compilation flags used please see compilation vitaBuildConfig.png
 
 ## Plotting and related libraries
 [Python 3.8.5](python.org/downloads/).
