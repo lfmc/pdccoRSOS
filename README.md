@@ -27,7 +27,8 @@ This section illustrates the application of the PDCCO to the vascularization of 
 # Needed software
 
 ## C++11
-
+Compile the .cpp files with a command similar to:
+  >g++ myCode.cpp -Wall -std=c++11 -O3 -I/usr/local/include -I/usr/local/include/vtk-8.1 -L/usr/local/lib -o myCode -lvita -lvtkCommonCore-8.1 -lvtkCommonDataModel-8.1 -lvtkCommonExecutionModel-8.1 -lvtkFiltersModeling-8.1 -lvtkIOCore-8.1 -lvtkIOLegacy-8.1 -lvtkIOXML-8.1 -lvtkIOGeometry-8.1 -lvtkInfovisCore-8.1
 ## CMake 
 
 Used for building **VTK** and **VItA** libraries. 
@@ -36,12 +37,12 @@ Available at https://cmake.org/download/.
 ## VTK 8.1.2
 
 [The Visualization Toolkit v8.1.2](https://gitlab.kitware.com/vtk/vtk/-/tree/v8.1.2) is used by the **VItA** library.
-For specific compilation flags used please see compilation vtkBuildConfig.png
+For specific compilation flags used please see compilationInstructions/vtkBuildConfig.png
 
 ## VItA 
 
 [The Virtual ITerative Angiogenesis](https://github.com/lfmc/VItA/tree/Cury2021_et_al_PDCCO) implements the PDCCO and [DCCO](https://doi.org/10.1038/s41598-021-85434-9) methods. For the main version please visit https://github.com/GonzaloMaso/VItA.
-For specific compilation flags used please see compilation vitaBuildConfig.png
+For specific compilation flags used please see compilationInstructions/vitaBuildConfig.png
 
 ## Plotting and related libraries
 [Python 3.8.5](python.org/downloads/).
